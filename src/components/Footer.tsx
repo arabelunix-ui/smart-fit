@@ -1,140 +1,124 @@
 "use client";
-
+import { Activity } from "lucide-react";
 import Link from "next/link";
-import { Globe, ChevronDown, ArrowUp } from "lucide-react";
-import { useState, useEffect } from "react";
+import Image from "next/image";
 
-const BG_WORDS = ["BOUDA", "MED", "COMPANY"];
+interface FooterProps {
+  dict: any;
+}
 
-export default function Footer() {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false); // Trigger exit animation
-      setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % BG_WORDS.length);
-        setFade(true); // Trigger enter animation
-      }, 700); // Wait 700ms for the elegant fade/blur to finish
-    }, 3500); // Change word every 3.5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+export default function Footer({ dict }: FooterProps) {
+  const footerLinks: Record<string, { name: string; href: string }[]> = {
+    [dict.nav.product]: [
+      { name: dict.nav.forAthletes, href: "/#users" },
+      { name: dict.nav.coachPlatform, href: "/#coachs" },
+      { name: dict.nav.ai, href: "/#ai-coach" },
+      { name: dict.nav.exerciseDB, href: "/#database" },
+      { name: dict.nav.integrations, href: "/#integrations" },
+      { name: dict.nav.pricing, href: "#" },
+    ],
+    [dict.nav.resources]: [
+      { name: dict.nav.blog, href: "#" },
+      { name: dict.nav.guides, href: "#" },
+      { name: dict.nav.help, href: "#" },
+      { name: dict.nav.apiDocs, href: "#" },
+      { name: dict.nav.forum, href: "#" },
+    ],
+    [dict.nav.company]: [
+      { name: dict.nav.about, href: "#" },
+      { name: dict.nav.careers, href: "#" },
+      { name: dict.nav.press, href: "#" },
+      { name: dict.nav.partners, href: "#" },
+      { name: dict.nav.contact, href: "#" },
+    ],
+    [dict.nav.legal]: [
+      { name: dict.nav.privacy, href: "#" },
+      { name: dict.nav.terms, href: "#" },
+      { name: dict.nav.legalNotice, href: "#" },
+      { name: dict.nav.cookies, href: "#" },
+    ]
   };
 
   return (
-    <footer className="bg-[#050505] pt-24 border-t border-white/5 relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+    <footer className="bg-[#0D1317] border-t border-white/5 pt-20 pb-10 relative overflow-hidden">
+      
+      {/* Subtle Glow effect at the bottom center */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[150px] bg-[#00FF88]/5 blur-[100px] rounded-[100%] pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-12 relative z-10">
         
-        <div className="flex flex-col lg:flex-row justify-between gap-16 mb-24">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-12 mb-16">
           
-          {/* Left Side */}
-          <div className="flex flex-col gap-10 lg:w-1/3">
-            <div>
-              <h2 className="text-[32px] font-semibold text-white mb-2 tracking-tight">
-                Think Deeper, Build Better
-              </h2>
-              <p className="text-[#666666] text-[15px]">
-                © 2026 BRIGHT ZENITH PRIVATE LIMITED. All rights reserved.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-6">
-              <button className="bg-white text-black px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-gray-200 transition-colors">
-                <Globe className="w-4 h-4" />
-                English
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
-              <div className="flex items-center gap-5 text-[#666666]">
-                <Link href="#" className="hover:text-white transition-colors">
-                  {/* X / Twitter */}
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </Link>
-                <Link href="#" className="hover:text-white transition-colors">
-                  {/* Discord */}
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
-                </Link>
-                <Link href="#" className="hover:text-white transition-colors">
-                  {/* Youtube */}
-                  <svg className="w-[22px] h-[22px]" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </Link>
-                <Link href="#" className="hover:text-white transition-colors">
-                  {/* LinkedIn */}
-                  <svg className="w-[20px] h-[20px]" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </Link>
-                <Link href="#" className="hover:text-white transition-colors">
-                  {/* Reddit */}
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.753 0 .716-.43 1.334-1.036 1.605.023.238.035.48.035.726 0 2.805-3.15 5.083-7.03 5.083-3.882 0-7.03-2.278-7.03-5.083 0-.246.012-.488.035-.726-.606-.271-1.036-.889-1.036-1.605 0-.967.786-1.753 1.754-1.753.477 0 .899.182 1.207.491 1.194-.856 2.85-1.418 4.674-1.488l.899-4.192c.046-.216.257-.354.477-.308l3.111.656a1.245 1.245 0 0 1 1.192-.816zM8.88 15.344c-.752 0-1.36.609-1.36 1.36 0 .752.608 1.36 1.36 1.36.752 0 1.36-.608 1.36-1.36 0-.751-.608-1.36-1.36-1.36zm6.24 0c-.752 0-1.36.609-1.36 1.36 0 .752.608 1.36 1.36 1.36.752 0 1.36-.608 1.36-1.36 0-.751-.608-1.36-1.36-1.36z"/></svg>
-                </Link>
+          {/* Brand & Social Column (takes up 2 columns on large screens) */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-2">
+            <Link href="/" className="flex items-center gap-3 mb-6 group inline-flex">
+              <div className="w-8 h-8 flex items-center justify-center transition-all rounded-lg">
+                <Image src="/logo.png" alt="SmartFit Logo" width={32} height={32} className="object-contain" />
               </div>
+              <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-[#00FF88] transition-colors">
+                SmartFit
+              </span>
+            </Link>
+            
+            <p className="text-[13px] text-[#A0AAB2] leading-relaxed mb-8 max-w-xs">
+              {dict.common.tagline}
+            </p>
+            
+            <div className="flex items-center gap-3">
+              <a href="#" className="w-9 h-9 rounded-full bg-[#152026] border border-white/5 flex items-center justify-center text-[#A0AAB2] hover:text-[#0D1317] hover:bg-[#00FF88] hover:border-[#00FF88] transition-all group">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-[#152026] border border-white/5 flex items-center justify-center text-[#A0AAB2] hover:text-[#0D1317] hover:bg-[#00FF88] hover:border-[#00FF88] transition-all group">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-[#152026] border border-white/5 flex items-center justify-center text-[#A0AAB2] hover:text-[#0D1317] hover:bg-[#00FF88] hover:border-[#00FF88] transition-all group">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-[#152026] border border-white/5 flex items-center justify-center text-[#A0AAB2] hover:text-[#0D1317] hover:bg-[#00FF88] hover:border-[#00FF88] transition-all group">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
             </div>
           </div>
 
-          {/* Right Side / Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 lg:w-[60%] text-[15px]">
-            <div className="flex flex-col gap-4">
-              <h3 className="text-[#888888] font-medium mb-3">Products</h3>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Pricing</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Desktop</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">JetBrains Plugin</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">CLI</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Mobile</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Cloud Agents</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Download</Link>
+          {/* Link Columns */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title} className="col-span-1">
+              <h3 className="text-white font-bold text-[13px] tracking-wider uppercase mb-5">
+                {title}
+              </h3>
+              <ul className="flex flex-col gap-3">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link 
+                      href={link.href} 
+                      className="text-[#A0AAB2] hover:text-[#00FF88] text-[13px] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="text-[#888888] font-medium mb-3">Resources</h3>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Docs</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Blog</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">FAQs</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Changelog</Link>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="text-[#888888] font-medium mb-3">Terms</h3>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Terms of Service</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Privacy Policy</Link>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="text-[#888888] font-medium mb-3">Connect</h3>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Feedback</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Contact Sales</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">Forum</Link>
-              <Link href="#" className="text-[#cccccc] hover:text-white transition-colors">About Us</Link>
-            </div>
-          </div>
+          ))}
+
         </div>
-      </div>
 
-      {/* Big Background Text Loop */}
-      <div className="relative w-full h-[18vw] min-h-[120px] overflow-hidden flex items-end justify-center pointer-events-none select-none">
-        <h1 
-          className={`text-[24vw] leading-[0.72] font-semibold text-center tracking-tighter transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-            fade ? 'opacity-100 scale-100 blur-0 translate-y-0' : 'opacity-0 scale-95 blur-sm translate-y-4'
-          }`}
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "2px rgba(255,95,109,0.3)",
-            maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
-            WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
-          }}
-        >
-          {BG_WORDS[wordIndex]}
-        </h1>
-      </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-[#A0AAB2] text-[12px]">
+            <span>© {new Date().getFullYear()} SmartFit Inc. {dict.common.copyright}</span>
+            <span className="hidden sm:inline">|</span>
+            <span className="flex items-center gap-1">{dict.common.designedWith} <span className="text-[#00FF88]">♥</span> {dict.common.forPerformance}</span>
+          </div>
+          
+          {/* Status Indicator */}
+          <a href="#" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#152026] border border-white/5 hover:border-white/10 transition-colors">
+            <div className="w-2 h-2 rounded-full bg-[#00FF88] shadow-[0_0_5px_#00FF88] animate-pulse" />
+            <span className="text-[11px] font-medium text-[#A0AAB2]">{dict.common.allSystemsOperational}</span>
+          </a>
+        </div>
 
-      {/* Back to top button */}
-      <div className="absolute bottom-8 right-8 z-20">
-        <button 
-          onClick={scrollToTop}
-          className="text-[#666666] hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
-        >
-          Back to top <ArrowUp className="w-4 h-4" />
-        </button>
       </div>
     </footer>
   );

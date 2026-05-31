@@ -1,0 +1,509 @@
+{
+  "common": {
+    "brandName": "SmartFit",
+    "tagline": "L'écosystème fitness de nouvelle génération propulsé par l'Intelligence Artificielle. Conçu pour les athlètes exigeants et les coachs visionnaires.",
+    "copyright": "Tous droits réservés.",
+    "designedWith": "Conçu avec",
+    "forPerformance": "pour la performance.",
+    "allSystemsOperational": "Tous les systèmes opérationnels",
+    "download": "Télécharger",
+    "smartfitBadge": "SmartFit",
+    "underDevelopment": "En cours de développement",
+    "underDevelopmentDesc": "L'équipe technique de SmartFit travaille activement sur cette section pour vous offrir une expérience parfaite. Cette page sera bientôt disponible avec toutes ses fonctionnalités. Merci de votre patience !",
+    "livePulse": "En direct"
+  },
+  "nav": {
+    "sportifs": "Sportifs",
+    "coachPro": "Coach Pro",
+    "exercices": "Exercices",
+    "telecharger": "Télécharger l'App",
+    "product": "Produit",
+    "forAthletes": "Pour les Sportifs",
+    "coachPlatform": "Plateforme Coach Pro",
+    "ai": "Intelligence Artificielle",
+    "exerciseDB": "Base d'exercices 4K",
+    "integrations": "Intégrations",
+    "pricing": "Tarifs & Abonnements",
+    "resources": "Ressources",
+    "blog": "Blog Fitness",
+    "guides": "Guides d'entraînement",
+    "help": "Centre d'aide",
+    "apiDocs": "Documentation API",
+    "forum": "Forum Communautaire",
+    "company": "Entreprise",
+    "about": "À propos de nous",
+    "careers": "Carrières",
+    "press": "Presse & Médias",
+    "partners": "Devenir Partenaire",
+    "contact": "Nous contacter",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d'utilisation",
+    "legalNotice": "Mentions légales",
+    "cookies": "Gestion des Cookies"
+  },
+  "hero": {
+    "badge": "La nouvelle ère du Fitness IA",
+    "title1": "Forgez votre corps",
+    "title2": "intelligemment",
+    "desc": "SmartFit fusionne l'expertise des meilleurs coachs professionnels avec une IA de pointe pour analyser votre posture, personnaliser vos programmes et maximiser vos résultats.",
+    "ctaStart": "Commencer l'entraînement",
+    "ctaDiscover": "Découvrir l'App",
+    "activeAthletes": "sportifs actifs",
+    "altPhoneMain": "Interface de l'application SmartFit",
+    "altPhoneLeft": "Interface application gauche",
+    "altPhoneRight": "Interface application droite"
+  },
+  "userFeatures": {
+    "title": "Pour les",
+    "titleHighlight": "Sportifs",
+    "subtitle": "Une suite complète d'outils pour repousser vos limites et comprendre votre corps. Sélectionnez une fonctionnalité pour en voir l'aperçu.",
+    "features": {
+      "programs": {
+        "title": "Programmes Sportifs",
+        "desc": "Accès à des programmes structurés et suivi des séances en temps réel."
+      },
+      "posture": {
+        "title": "Détection de Posture IA",
+        "desc": "Analyse vidéo en temps réel pour corriger vos mouvements et éviter les blessures."
+      },
+      "gps": {
+        "title": "Suivi GPS Outdoor",
+        "desc": "Courez, roulez et tracez vos itinéraires directement sur la carte intégrée."
+      },
+      "tracking": {
+        "title": "Suivi Physique",
+        "desc": "Mensurations, poids, ciblage musculaire et graphiques de progression."
+      },
+      "nutrition": {
+        "title": "Nutrition",
+        "desc": "Gérez vos repas, comptez vos calories et suivez vos régimes alimentaires."
+      }
+    },
+    "mockWorkouts": {
+      "title": "Programme du Jour",
+      "bodyPart": "Haut du corps",
+      "workoutName": "Hypertrophie Pectoraux",
+      "duration": "45 min",
+      "calories": "450 kcal",
+      "startSession": "Démarrer la séance",
+      "exercises": "Exercices",
+      "exercise1": "Développé Couché",
+      "exercise1Sets": "4 séries x 10 reps",
+      "exercise2": "Écarté Poulie",
+      "exercise2Sets": "3 séries x 12 reps",
+      "exercise3": "Pompes Inclinées",
+      "exercise3Sets": "3 séries x max"
+    },
+    "mockAI": {
+      "postureExcellent": "Posture Excellente",
+      "feedback": "Votre dos est parfaitement droit. Maintenez cette position pour le soulevé de terre."
+    },
+    "mockGPS": {
+      "distance": "Distance",
+      "pace": "Rythme"
+    },
+    "mockStats": {
+      "title": "Évolution",
+      "bodyWeight": "Poids Corporel",
+      "goal": "Objectif",
+      "current": "Actuel"
+    },
+    "mockNutrition": {
+      "title": "Nutrition",
+      "carbs": "Glucides",
+      "proteins": "Protéines",
+      "fats": "Lipides"
+    },
+    "daysShort": ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
+  },
+  "aiCoach": {
+    "badge": "Intelligence Artificielle",
+    "title1": "Votre Coach Virtuel,",
+    "title2": "hyper-personnalisé.",
+    "desc": "Notre intelligence artificielle de dernière génération analyse votre physiologie, vos objectifs et votre équipement disponible pour générer instantanément le programme parfait.",
+    "instant": {
+      "title": "Instantané",
+      "desc": "Votre plan d'entraînement sur-mesure est généré en moins de 3 secondes."
+    },
+    "adaptive": {
+      "title": "Évolutif",
+      "desc": "L'IA adapte la difficulté semaine après semaine selon vos ressentis et vos progrès réels."
+    },
+    "mock": {
+      "engineName": "SmartFit AI Engine",
+      "connected": "CONNECTÉ",
+      "yourGoal": "Votre Objectif",
+      "goalText": "\"Je veux prendre de la masse musculaire, j'ai 4 jours par semaine et je m'entraîne à la maison uniquement avec des haltères.\"",
+      "generating": "GÉNÉRATION DU PROGRAMME EN COURS",
+      "day1": "Jour 1 : Bas du corps (Hypertrophie)",
+      "day1Desc": "Squat Bulgare, Soulevé de terre jambes tendues, Fentes...",
+      "day2": "Jour 2 : Haut du corps (Force)",
+      "day2Desc": "Développé couché haltères, Rowing bûcheron, Élévations...",
+      "day3": "Jour 3 : Récupération active",
+      "day3Desc": "Mobilité articulaire, étirements ciblés, gainage..."
+    }
+  },
+  "coachMode": {
+    "badge": "Mode Coach Pro",
+    "title1": "Gérez votre activité avec",
+    "title2": "excellence",
+    "desc": "Offrez une véritable plateforme de gestion professionnelle à vos clients. Centralisez vos programmes, votre communication et vos plannings pour gagner du temps.",
+    "tools": {
+      "profile": {
+        "title": "Profil Professionnel",
+        "desc": "Mettez en valeur vos spécialités pour attirer des clients."
+      },
+      "creation": {
+        "title": "Outils de Création",
+        "desc": "Concevez des programmes et des plans nutritionnels sur-mesure."
+      },
+      "analytics": {
+        "title": "Suivi & Analytics",
+        "desc": "Analysez la progression de chaque client en un coup d'œil."
+      },
+      "communication": {
+        "title": "Communication",
+        "desc": "Chat intégré pour motiver vos clients en temps réel."
+      },
+      "calendar": {
+        "title": "Agenda Intégré",
+        "desc": "Organisez vos séances et gérez vos disponibilités facilement."
+      }
+    },
+    "mockProfile": {
+      "activeClients": "Clients Actifs",
+      "monthlyRevenue": "Revenus (Mois)",
+      "sessions": "Séances",
+      "dayOverview": "Aperçu de la journée",
+      "sessionsToday": "4 séances programmées aujourd'hui"
+    },
+    "mockCreation": {
+      "title": "Création de Programme",
+      "new": "Nouveau",
+      "library": "Bibliothèque"
+    },
+    "mockAnalytics": {
+      "title": "Croissance du Chiffre d'Affaires"
+    },
+    "mockCalendar": {
+      "title": "Planning Hebdomadaire",
+      "today": "Aujourd'hui"
+    },
+    "mockChat": {
+      "online": "En ligne",
+      "placeholder": "Écrire un message..."
+    }
+  },
+  "communication": {
+    "badge": "Révolution Communautaire",
+    "title1": "L'entraide au cœur",
+    "title2": "de votre progression.",
+    "desc": "SmartFit n'est pas qu'une application d'entraînement. C'est un écosystème social où l'intelligence collective élève chaque athlète. Échangez, challengez et grandissez ensemble.",
+    "features": {
+      "chat": {
+        "title": "Chat d'Équipe Privé",
+        "desc": "Créez des groupes avec vos partenaires d'entraînement et partagez vos performances en temps réel."
+      },
+      "challenges": {
+        "title": "Challenges & Classements",
+        "desc": "Lancez des défis à votre réseau. Classements dynamiques et récompenses virtuelles à la clé."
+      },
+      "social": {
+        "title": "Fil d'Actualité Sportif",
+        "desc": "Publiez vos exploits, commentez ceux de vos amis et inspirez la communauté."
+      }
+    }
+  },
+  "exerciseDB": {
+    "badge": "Librairie Complète",
+    "title1": "La base de données",
+    "title2": "ultime",
+    "desc": "Plus de 1000+ exercices minutieusement répertoriés. Que vous soyez en salle de sport, à la maison ou en voyage, notre IA trouve toujours le mouvement parfait.",
+    "anatomy": "Anatomie Complète",
+    "anatomyTitle": "Ciblez chaque fibre musculaire",
+    "anatomyDesc": "Développez vos points faibles avec une précision chirurgicale. L'algorithme sélectionne les meilleurs angles de travail pour votre morphologie.",
+    "adaptability": "Adaptabilité Totale",
+    "adaptabilityTitle": "Peu importe votre matériel",
+    "adaptabilityDesc": "Vous n'avez qu'une paire d'haltères ? Vous êtes dans une salle suréquipée ? Renseignez votre matériel et SmartFit recalcule instantanément votre séance.",
+    "equipment": {
+      "bodyweight": "Poids du corps",
+      "dumbbells": "Haltères & Barres",
+      "machines": "Machines Guidées",
+      "bands": "Élastiques & Câbles"
+    },
+    "video": "Exécution Parfaite",
+    "videoTitle": "Vidéos pédagogiques 4K",
+    "videoDesc": "Chaque exercice est accompagné d'une vidéo de démonstration sous plusieurs angles et d'instructions audio étape par étape.",
+    "muscles": ["Pectoraux", "Dorsaux", "Quadriceps", "Ischio-jambiers", "Épaules", "Biceps", "Triceps", "Mollets", "Abdominaux", "Fessiers"]
+  },
+  "integrations": {
+    "badge": "Écosystème Connecté",
+    "title1": "Toutes vos données,",
+    "title2": "centralisées.",
+    "desc": "Ne perdez plus aucune goutte de sueur. SmartFit récupère automatiquement vos courses, vos pas et vos calories brûlées depuis vos applications et montres préférées."
+  },
+  "download": {
+    "title1": "L'application fitness",
+    "title2": "la plus avancée.",
+    "desc": "Prochainement disponible sur App Store et Google Play. Soyez parmi les premiers sportifs et coachs à transformer vos résultats avec SmartFit.",
+    "appStore": "App Store",
+    "appStorePrefix": "Télécharger dans l'",
+    "googlePlay": "Google Play",
+    "googlePlayPrefix": "DISPONIBLE SUR",
+    "rating": "4.9/5",
+    "reviews": "(10k+ avis)",
+    "secureData": "Données sécurisées",
+    "altAndroid": "Interface application Android",
+    "altIOS": "Interface application iOS"
+  },
+  "pages": {
+    "home": {
+      "title": "Bouda Med Company",
+      "description": "Site Web de Bouda Med Company"
+    },
+    "about": {
+      "title": "À propos de nous",
+      "desc": "Découvrez notre mission : révolutionner le fitness grâce à l'Intelligence Artificielle."
+    },
+    "help": {
+      "title": "Centre d'aide",
+      "desc": "Trouvez rapidement des réponses à vos questions sur l'utilisation de SmartFit."
+    },
+    "apiDocs": {
+      "title": "Documentation API",
+      "desc": "Intégrez la puissance de notre IA de coaching directement dans vos propres applications."
+    },
+    "blog": {
+      "title": "Blog Fitness",
+      "desc": "Les derniers articles, conseils d'entraînement et actualités de la communauté SmartFit."
+    },
+    "careers": {
+      "title": "Carrières",
+      "desc": "Rejoignez l'équipe qui construit le futur du sport et de la technologie."
+    },
+    "communique": {
+      "badge": "Communiqué Officiel",
+      "title": "Annonce d'un Partenariat Stratégique et Feuille de Route",
+      "published": "Publié le 30 Mai 2026",
+      "emitter": "Émetteur : Bouda Med Company",
+      "back": "Retour",
+      "lead": "Bouda Med Company annonce officiellement la nomination de « Web Geo » pour assurer la direction et la supervision complète du projet stratégique « Bouda El Mouhandis ».",
+      "body": "Ce projet d'envergure s'étendra sur une durée précise de 13 mois et 1 jour, débutant officiellement le 31 mai 2026 pour s'achever avec l'atteinte de ses objectifs finaux le 1er juillet 2027.",
+      "objectivesTitle": "Objectifs Principaux",
+      "objectives": [
+        "Mise en place d'une gouvernance technologique de pointe.",
+        "Déploiement d'outils d'intelligence artificielle pour l'assistance aux étudiants.",
+        "Supervision et encadrement rigoureux jusqu'à l'obtention des résultats finaux (PFE)."
+      ],
+      "keyStepsTitle": "Les Étapes Clés",
+      "keyStepsDesc": "La feuille de route se décline en plusieurs phases critiques, de la phase d'Été 2026 dédiée au développement, jusqu'à la phase PFE au printemps 2027 pour l'intégration au marché du travail via des écosystèmes IA ciblés.",
+      "pdfTitle": "Version PDF Officielle",
+      "pdfDesc": "Téléchargez le communiqué de presse complet au format PDF.",
+      "pdfButton": "Télécharger (PDF)"
+    },
+    "conditions": {
+      "title": "Conditions d'utilisation",
+      "desc": "Les règles d'utilisation de notre plateforme et de nos services."
+    },
+    "conferencePresse": {
+      "liveBadge": "Événement Exclusif",
+      "title1": "Grande",
+      "title2": "Conférence",
+      "title3": "de Presse",
+      "desc": "Rejoignez-nous pour définir le rôle stratégique de chaque équipe dans le grand lancement du projet Bouda Med Mohandess (Version 2027).",
+      "watchLive": "Regarder le Direct",
+      "discover": "Découvrir les annonces",
+      "date": "Date",
+      "location": "Lieu",
+      "format": "Format",
+      "audience": "Public",
+      "dateValue": "30 Mai 2026",
+      "dateDetail": "À partir de 21:00 (nuit)",
+      "locationValue": "Trabzon Ouislane",
+      "locationDetail": "Siège de l'événement",
+      "formatValue": "Hybride",
+      "formatDetail": "Présentiel & Live Streaming",
+      "audienceValue": "Accès Restreint",
+      "audienceDetail": "Organisateurs, encadrants et staff technique de Bouda Med Company.",
+      "agendaTitle": "Programme de l'Événement",
+      "agendaDesc": "Un planning chargé d'innovations et de surprises.",
+      "agenda": [
+        {
+          "time": "21:00",
+          "title": "Keynote d'Ouverture",
+          "speaker": "CEO Bouda Med Company",
+          "desc": "La vision de l'entreprise pour la saison 2026-2027 et l'avenir de l'ingénierie éducative."
+        },
+        {
+          "time": "21:30",
+          "title": "Lancement : Bouda Med Mohandess 2027",
+          "speaker": "Directeur Technique & Comité de Pilotage",
+          "desc": "Attribution des rôles stratégiques pour le lancement du projet Bouda Med Mohandess (Version 2027) et présentation des outils d'encadrement."
+        },
+        {
+          "time": "22:15",
+          "title": "Session Q&A et Échanges",
+          "speaker": "Panel d'Experts",
+          "desc": "Questions et réponses avec la presse, les étudiants et les partenaires technologiques."
+        }
+      ],
+      "speaker": "Intervenant :"
+    },
+    "confidentialite": {
+      "title": "Politique de Confidentialité",
+      "desc": "Vos données de santé sont privées. Découvrez comment nous les protégeons."
+    },
+    "contact": {
+      "title": "Nous Contacter",
+      "desc": "Notre équipe est là pour vous accompagner. Laissez-nous un message."
+    },
+    "cookies": {
+      "title": "Gestion des Cookies",
+      "desc": "Contrôlez vos préférences de navigation et de traçage."
+    },
+    "examens": {
+      "badge": "Semestre 8 - ENIAD",
+      "title1": "Modules à",
+      "title2": "Valider",
+      "alert": "Le calendrier détaillé des examens (horaires et jours exacts) sera publié ultérieurement.",
+      "supervisor": "Encadrant",
+      "modules": [
+        { "title": "Apprentissage par Renforcement", "desc": "Agents intelligents, MDP, Q-Learning, Deep Q-Networks.", "supervisor": "Arabe Lunix" },
+        { "title": "Langues et Communication 4", "desc": "Rédaction technique, prise de parole, anglais IT.", "supervisor": "Langue Nouveau" },
+        { "title": "Développement Personnel", "desc": "Gestion du stress, intelligence émotionnelle, leadership.", "supervisor": "Marketing Degital" },
+        { "title": "Atelier des Activités Pratiques", "desc": "Mini-projets, hackathons, intégration de compétences.", "supervisor": "Med Mechel" },
+        { "title": "Ingénierie DevOps", "desc": "CI/CD, Docker, Kubernetes, Infrastructure as Code.", "supervisor": "Pyhthon Pc Java" },
+        { "title": "Business Intelligence et ERP", "desc": "ETL, Tableaux de bord (Power BI), Progiciels (Odoo/SAP).", "supervisor": "Svt Network" },
+        { "title": "Deep Learning", "desc": "Réseaux de neurones (CNN, RNN/LSTM), TensorFlow, PyTorch.", "supervisor": "Math Ia" },
+        { "title": "Administration de Bases de Données", "desc": "Disponibilité, sécurité, backup, tuning (Oracle, PostgreSQL, NoSQL).", "supervisor": "web Geo" }
+      ]
+    },
+    "forum": {
+      "title": "Forum Communautaire",
+      "desc": "Échangez avec des milliers d'athlètes et de coachs du monde entier."
+    },
+    "guides": {
+      "title": "Guides d'entraînement",
+      "desc": "Des guides complets étape par étape pour maîtriser chaque mouvement."
+    },
+    "legal": {
+      "title": "Mentions Légales",
+      "desc": "Informations juridiques et administratives concernant SmartFit Inc."
+    },
+    "partenaires": {
+      "title": "Devenir Partenaire",
+      "desc": "Salles de sport, marques d'équipement : collaborez avec nous."
+    },
+    "presse": {
+      "title": "Presse & Médias",
+      "desc": "Ressources, communiqués de presse et kit média officiel de SmartFit."
+    },
+    "tarifs": {
+      "title": "Tarifs & Abonnements",
+      "desc": "Choisissez le plan qui correspond à vos objectifs et à votre budget."
+    },
+    "projectS9": {
+      "badge": "Octobre - Décembre 2026",
+      "title": "Projet S9",
+      "subtitle": "Dernier Semestre Académique & Excellence Opérationnelle",
+      "overview": "Cette phase est le point culminant du parcours académique avant le PFE. Elle vise à acquérir les compétences techniques avancées et de gestion nécessaires pour clôturer le cursus en beauté, sous la direction de Bouda Med Company.",
+      "start": "Lancement",
+      "startDate": "1er Octobre 2026",
+      "end": "Fin officielle",
+      "endDate": "31 Décembre 2026",
+      "duration": "Durée",
+      "durationValue": "3 mois",
+      "modulesTitle": "Modules d'Enseignement (S9)",
+      "modulesDesc": "Détail des modules stratégiques pilotés et gérés de manière optimale durant cette période.",
+      "modules": [
+        { "title": "1. Urbanisation des SI", "desc": "Étude de l'alignement stratégique du système d'information sur les objectifs de l'entreprise. Cartographie fonctionnelle et applicative pour concevoir un SI agile et évolutif." },
+        { "title": "2. Architecture Logicielle", "desc": "Maîtrise des modèles de conception (Design Patterns). Création d'architectures logicielles robustes, maintenables et adaptées aux projets de grande envergure." },
+        { "title": "3. Ingénierie Big Data", "desc": "Apprentissage des concepts, outils et architectures pour traiter et analyser des données massives. Transformation de données complexes en informations stratégiques." },
+        { "title": "4. Cloud & Virtualisation", "desc": "Déploiement et gestion des infrastructures informatiques à distance (virtualisation, plateformes Cloud IaaS, PaaS, SaaS)." },
+        { "title": "5. Atelier Pentesting Web", "desc": "Formation pratique sur la sécurité offensive. Techniques de tests d'intrusion pour identifier, exploiter et corriger les vulnérabilités web." },
+        { "title": "6. Interconnexion & Sécurité Réseaux", "desc": "Conception et administration d'architectures réseaux avancées. Protocoles de routage, commutation et mécanismes de protection des données." },
+        { "title": "7. Éthiques et Droits", "desc": "Sensibilisation au cadre juridique (droit de l'informatique, vie privée, propriété intellectuelle) et déontologie professionnelle de l'ingénieur." },
+        { "title": "8. Langues & Communication 5", "desc": "Communication bilingue (FR/EN). Prise de parole en public, rédaction de rapports (prépa PFE) et techniques de communication persuasives." }
+      ],
+      "meetingsTitle": "Calendrier des Réunions Mensuelles",
+      "meetingsDesc": "Les réunions se tiendront dans la Salle de Réunion Numérique Intelligente pour suivre les performances académiques et l'avancement des projets.",
+      "meetingDate": "Date de la Réunion",
+      "meetingType": "Type de Réunion",
+      "meetingAgenda": "Ordre du jour principal",
+      "meetings": [
+        { "date": "Samedi 3 Octobre 2026", "type": "Lancement S9", "desc": "Coup d'envoi du semestre. Revue des objectifs académiques pour chaque module, mise en place des emplois du temps dans l'application Encadrant et point sur le projet « Geo Vest »." },
+        { "date": "Samedi 7 Novembre 2026", "type": "Suivi (Mi-parcours)", "desc": "Analyse chiffrée via l'IA des performances académiques actuelles. Point sur l'avancement des projets pratiques (notamment Pentesting et Big Data) et suivi des objectifs sportifs (Strava)." },
+        { "date": "Samedi 5 Décembre 2026", "type": "Bilan Pré-Examens", "desc": "Préparation logistique et stratégique pour les examens finaux du S9. Point d'étape sur la plateforme « Angelfitness » et début des réflexions pour la recherche du PFE." }
+      ]
+    },
+    "projectEte2026": {
+      "badge": "Juin - Août 2026",
+      "title": "Phase Été 2026",
+      "subtitle": "Déploiement Technologique & Clôture S8",
+      "overview": "Cette phase représente le premier grand pilier du projet « Bouda El Mouhandis ». C'est une période de transition majeure qui combine l'achèvement d'un cycle académique/opérationnel (le S8) avec la mise en place de la fondation technologique (100% IA) qui servira pour toute la suite du projet.",
+      "start": "Lancement",
+      "startDate": "1er Juin 2026",
+      "end": "Fin officielle",
+      "endDate": "31 Août 2026",
+      "duration": "Durée",
+      "durationValue": "3 mois",
+      "projectsTitle": "Projets Associés et Livrables",
+      "projectsDesc": "Cette phase est divisée en deux grands axes de travail.",
+      "axis1Title": "Achèvement du Projet « S8 »",
+      "axis1ObjectiveLabel": "Objectif Principal",
+      "axis1Objective": "Finaliser la validation de tous les modules du semestre 8 avec des résultats optimaux, en assurant une gestion de projet rigoureuse et documentée.",
+      "axis1DeliverableLabel": "Livrable Attendu",
+      "axis1Deliverable": "Rapport de clôture S8 + Tableau de bord des performances académiques (avec notes, compétences validées et axes d'amélioration).",
+      "axis2Title": "Fondation Technologique & Déploiement Marketing",
+      "axis2Desc": "La phase pose les fondations technologiques nécessaires pour accélérer le développement et la visibilité du projet.",
+      "axis2Cards": [
+        { "title": "Site Web Vitrine avec Blog", "desc": "Développement et mise en ligne du site marketing vitrine 'Bouda Med Company'. Intégration d'un blog optimisé SEO pour améliorer le référencement naturel.", "icon": "MonitorSmartphone" },
+        { "title": "Hub d'Intelligence Artificielle", "desc": "Mise en place d'un assistant IA centralisé. Chatbot intelligent, génération automatique de rapports et analyse prédictive des performances.", "icon": "Brain" },
+        { "title": "Stratégie Marketing Digitale (4 leviers)", "desc": "", "icon": "TrendingUp", "items": [{ "label": "Social Media", "desc": "Stratégie de contenu sur Instagram, TikTok, YouTube" }, { "label": "SEO/SEA", "desc": "Optimisation du référencement + Campagnes Ads" }, { "label": "Partnerships", "desc": "Établir des partenariats stratégiques avec des influenceurs fitness" }] },
+        { "title": "Gouvernance & Documentation", "desc": "Mise en place des outils de gestion de projet (Jira/Notion), documentation technique complète et charte éditoriale pour tous les supports.", "icon": "CheckCircle2" }
+      ],
+      "meetingsTitle": "Calendrier des Réunions",
+      "meetingsDesc": "Réunions de suivi pour la phase d'été.",
+      "meetingDate": "Date",
+      "meetingType": "Type",
+      "meetingAgenda": "Ordre du jour",
+      "meetings": [
+        { "date": "Samedi 7 Juin 2026", "type": "Lancement Phase Été", "desc": "Coup d'envoi de la phase estivale. Revue des objectifs de clôture du S8, définition des lots techniques pour le site web et l'IA, et répartition des rôles." },
+        { "date": "Samedi 5 Juillet 2026", "type": "Suivi Mi-parcours", "desc": "Point d'étape sur les 6 projets du S8. Vérification de l'avancement du site web (maquettes + contenu) et premiers tests de l'assistant IA." },
+        { "date": "Samedi 2 Août 2026", "type": "Bilan Final Été", "desc": "Validation de la clôture académique (relevés de notes S8). Livraison finale du MVP du site web et du prototype de l'assistant IA." }
+      ]
+    },
+    "projectSept2026": {
+      "badge": "Septembre 2026",
+      "title": "Septembre",
+      "titleHighlight": "2026",
+      "subtitle": "Préparation Stratégique & Lancement S9",
+      "overview": "Cette phase de transition stratégique d'un mois sert de pont entre la clôture du S8 et le lancement du S9. Elle est dédiée à la consolidation des acquis, à la préparation administrative et académique du nouveau semestre, ainsi qu'à la finalisation des outils développés pendant l'été.",
+      "start": "Début",
+      "startDate": "1er Septembre 2026",
+      "end": "Fin",
+      "endDate": "30 Septembre 2026",
+      "duration": "Durée",
+      "durationValue": "1 mois",
+      "projectsTitle": "Axes Stratégiques de la Transition",
+      "projectsDesc": "Un mois clé pour préparer le terrain du dernier semestre académique.",
+      "axes": [
+        { "title": "Clôture Administrative & Bilan S8", "objective": "Finaliser tous les aspects administratifs du S8 : relevés de notes, validation des compétences, et préparation des dossiers de passage en S9.", "deliverables": ["Relevés de notes officiels S8 signés", "Dossier de validation des compétences", "Rapport de rentrée personnalisé"], "icon": "Route" },
+        { "title": "Préparation Académique S9", "objective": "Planifier et organiser le semestre S9 : sélection des modules, choix des encadrants, et préparation du planning.", "deliverables": ["Emploi du temps S9 validé", "Liste des modules et des encadrants", "Objectifs académiques du semestre"], "icon": "BookOpen" },
+        { "title": "Finalisation Technologique", "objective": "Peaufiner les outils développés pendant l'été : site web, assistant IA, et documentation technique pour les rendre opérationnels.", "deliverables": ["Site web vitrine finalisé et en ligne", "Assistant IA opérationnel", "Documentation technique complète"], "icon": "Layers" }
+      ],
+      "objectiveLabel": "Objectif Stratégique",
+      "deliverableLabel": "Livrables Clés",
+      "meetingsTitle": "Calendrier des Réunions",
+      "meetingsDesc": "Réunions de coordination pour la transition.",
+      "meetingDate": "Date",
+      "meetingType": "Type",
+      "meetingAgenda": "Ordre du jour",
+      "meetings": [
+        { "date": "Samedi 6 Septembre 2026", "type": "Lancement Septembre", "desc": "Réunion de lancement de la phase de transition. Revue des bilans S8 et préparation du planning S9." },
+        { "date": "Samedi 20 Septembre 2026", "type": "Pré-Rentrée S9", "desc": "Point final avant le début du S9. Validation des outils technologiques et confirmation des objectifs académiques." }
+      ]
+    }
+  }
+}

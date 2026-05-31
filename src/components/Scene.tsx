@@ -5,6 +5,10 @@ import { OrbitControls, Float, Sphere, MeshDistortMaterial } from "@react-three/
 import { Suspense, useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
+interface SceneProps {
+  dict: any;
+}
+
 function AnimatedShape() {
   const meshRef = useRef<THREE.Mesh>(null);
 
@@ -31,7 +35,7 @@ function AnimatedShape() {
   );
 }
 
-export default function Scene() {
+export default function Scene({ dict }: SceneProps) {
   // Fix hydration mismatch by only rendering 3D client-side
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);

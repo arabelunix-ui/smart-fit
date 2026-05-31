@@ -1,128 +1,165 @@
 "use client";
-
-import { ArrowRight } from "lucide-react";
+import { Dumbbell, Play, Activity, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  dict: any;
+}
+
+export default function HeroSection({ dict }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   return (
-    <div className="relative h-[calc(100vh-73px)] w-full flex items-center overflow-hidden border-b border-white/5 bg-black/40">
-      {/* 3D Animated Background */}
-      <div className="absolute inset-0 z-0 [perspective:1000px] pointer-events-none">
-        {/* Animated glowing orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF5F6D]/20 rounded-full blur-[120px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-[#FF9A9E]/10 rounded-full blur-[150px] mix-blend-screen animate-[pulse_8s_ease-in-out_infinite_alternate]" />
-        
-        {/* 3D Moving Grid */}
-        <div 
-          className="absolute inset-x-0 bottom-0 h-[70vh] origin-bottom"
-          style={{
-            transform: 'rotateX(65deg) scale(2.5)',
-            backgroundImage: `
-              linear-gradient(to right, rgba(35, 233, 116, 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(35, 233, 116, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-            maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
-            animation: 'gridMove 15s linear infinite',
-          }}
-        />
-
-        {/* Floating 3D Particles */}
-        {mounted && (
-          <div className="absolute inset-0">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-white/20 rounded-full"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  transform: `translateZ(${Math.random() * 200}px)`,
-                  animation: `float ${5 + Math.random() * 10}s linear infinite`,
-                  boxShadow: '0 0 10px rgba(255,255,255,0.5)'
-                }}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-
+    <div className="relative w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden border-b border-white/5 bg-[#0D1317]">
+      
+      {/* --- CSS Animations --- */}
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes gridMove {
-          0% { background-position: 0 0; }
-          100% { background-position: 0 40px; }
+        @keyframes floatMain {
+          0% { transform: translateY(0px) rotateY(-8deg) rotateX(4deg); }
+          100% { transform: translateY(-12px) rotateY(-8deg) rotateX(4deg); }
         }
-        @keyframes float {
-          0% { transform: translateY(0px) scale(1); opacity: 0; }
-          50% { opacity: 1; }
-          100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        @keyframes floatSideLeft {
+          0% { transform: translateY(0px) rotateY(12deg) rotateX(4deg) translateZ(-40px); }
+          100% { transform: translateY(-8px) rotateY(12deg) rotateX(4deg) translateZ(-40px); }
+        }
+        @keyframes floatSideRight {
+          0% { transform: translateY(0px) rotateY(-12deg) rotateX(4deg) translateZ(-40px); }
+          100% { transform: translateY(-8px) rotateY(-12deg) rotateX(4deg) translateZ(-40px); }
+        }
+        @keyframes ai_pulse {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0.6; transform: scale(0.95); }
+        }
+        @keyframes drift {
+          0% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+          100% { transform: translateY(0px) rotate(360deg); }
+        }
+        @keyframes floatParticle {
+          0% { transform: translateY(0px) scale(0.8); opacity: 0.3; }
+          50% { transform: translateY(-30px) scale(1.2); opacity: 0.8; }
+          100% { transform: translateY(0px) scale(0.8); opacity: 0.3; }
         }
       `}} />
 
-      {/* Content wrapper */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Background Glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00FF88]/10 rounded-full blur-[150px] mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#00FF88]/5 rounded-full blur-[120px] mix-blend-screen pointer-events-none" />
+
+      {/* Animated Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Animated Squares */}
+        <div className="absolute top-[20%] left-[10%] w-16 h-16 border border-[#00FF88]/20 rounded-xl" style={{ animation: 'drift 12s infinite linear' }} />
+        <div className="absolute top-[60%] right-[15%] w-24 h-24 border border-[#00FF88]/10 rounded-2xl" style={{ animation: 'drift 18s infinite linear reverse' }} />
+        <div className="absolute bottom-[20%] left-[30%] w-12 h-12 border border-[#3878FF]/20 rounded-lg" style={{ animation: 'drift 15s infinite linear' }} />
         
-        {/* Left Column */}
-        <div className="space-y-8">
-          <Link href="/conference-presse" className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF5F6D]/30 bg-[#FF5F6D]/10 text-sm text-[#FF5F6D] font-medium backdrop-blur-md hover:bg-[#FF5F6D]/20 transition-colors group">
-            <span className="relative flex h-2 w-2 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5F6D] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF5F6D]"></span>
+        {/* Little Balls (Particles) */}
+        <div className="absolute top-[30%] right-[30%] w-3 h-3 bg-[#00FF88]/40 rounded-full blur-[1px]" style={{ animation: 'floatParticle 8s infinite ease-in-out' }} />
+        <div className="absolute bottom-[40%] left-[20%] w-4 h-4 bg-[#3878FF]/30 rounded-full blur-[2px]" style={{ animation: 'floatParticle 10s infinite ease-in-out 1s' }} />
+        <div className="absolute top-[70%] left-[50%] w-2 h-2 bg-[#00FF88]/60 rounded-full" style={{ animation: 'floatParticle 6s infinite ease-in-out 2s' }} />
+        <div className="absolute top-[15%] left-[50%] w-5 h-5 bg-[#00FF88]/20 rounded-full blur-[2px]" style={{ animation: 'floatParticle 12s infinite ease-in-out' }} />
+        <div className="absolute bottom-[10%] right-[40%] w-3 h-3 bg-[#3878FF]/40 rounded-full" style={{ animation: 'floatParticle 9s infinite ease-in-out 3s' }} />
+      </div>
+
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-12 h-full flex flex-col lg:flex-row items-center justify-between py-12 lg:py-0">
+        
+        {/* Left Column: Text Content */}
+        <div className="w-full lg:w-1/2 space-y-6 pt-12 lg:pt-0 z-20">
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#00FF88] font-bold text-[10px] uppercase tracking-widest backdrop-blur-md">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF88] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00FF88]"></span>
             </span>
-            Conférence de Presse (30 Mai 2026) <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            {dict.hero.badge}
+          </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.2] text-white">
-            BoudaMed, Agentic <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5F6D] to-[#FF9A9E]">Platform</span> for Real Software
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.2]">
+            {dict.hero.title1} <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF88] to-emerald-200">
+              {dict.hero.title2}
+            </span>
           </h1>
           
-          <div className="flex flex-wrap items-center gap-6 pt-4">
-            <button className="flex items-center gap-3 px-8 py-3.5 bg-white hover:bg-gray-100 text-black font-semibold rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-              {/* Windows Icon */}
-              <svg viewBox="0 0 88 88" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 12.402l35.687-4.86.016 34.423-35.703.206v-29.77zM87.167 4.223v36.636l-44.407.255v-35.21l44.407-1.68zM35.71 47.984l-.015 33.673-35.695-4.805v-29.074l35.71.206zM87.167 47.984v35.753l-44.407-6.09v-29.914l44.407.25z"/>
-              </svg>
-              Download Free
+          <p className="text-sm sm:text-base text-[#A0AAB2] max-w-lg leading-relaxed">
+            {dict.hero.desc}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-[#00FF88] text-[#0D1317] text-xs font-bold rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(0,255,136,0.2)] hover:shadow-[0_0_30px_rgba(0,255,136,0.4)]">
+              <Dumbbell className="w-3.5 h-3.5" /> {dict.hero.ctaStart}
             </button>
-            <a href="#" className="flex items-center gap-2 text-gray-300 hover:text-[#FF5F6D] font-medium transition-colors group">
-              View all versions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-[#152026] text-white text-xs border border-white/10 font-bold rounded-full transition-all hover:bg-white/5 group">
+              <Play className="w-3.5 h-3.5 group-hover:text-[#00FF88] transition-colors" /> {dict.hero.ctaDiscover}
+            </button>
+          </div>
+          
+          <div className="pt-4 flex items-center gap-3">
+            <div className="flex -space-x-2.5">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="w-6 h-6 rounded-full border-2 border-[#0D1317] bg-[#152026] flex items-center justify-center overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-[#00FF88]/20 to-transparent" />
+                </div>
+              ))}
+            </div>
+            <div className="text-[10px] text-[#A0AAB2] tracking-wide">
+              <strong className="text-white">10 000+</strong> {dict.hero.activeAthletes}
+            </div>
           </div>
         </div>
 
-        {/* Right Column */}
-        <div className="flex flex-col items-start lg:items-end text-left lg:text-right space-y-6">
-          <div className="flex items-center gap-3 bg-black/40 p-3 pr-6 rounded-full border border-white/10 backdrop-blur-md hover:bg-white/5 transition-all duration-300 cursor-pointer shadow-xl">
-            <div className="w-10 h-10 bg-[#FF6154] rounded-full flex items-center justify-center relative">
-              <span className="text-white text-xl font-bold">P</span>
-              <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] px-1.5 py-0.5 rounded-sm font-bold border border-black">★</div>
+        {/* Right Column: 3D CSS Scene */}
+        <div className="w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-auto lg:min-h-[600px] relative z-10 flex items-center justify-center mt-12 lg:mt-0">
+          <div className="relative w-full max-w-[500px] flex items-center justify-center scale-75 sm:scale-90 lg:scale-100" style={{ perspective: "1000px" }}>
+            
+            {/* Left Phone: Stats Bars */}
+            <div className="absolute left-[-10%] sm:left-[-5%] w-[160px] h-[320px] bg-[#152026] rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
+                 style={{ animation: "floatSideLeft 4s ease-in-out infinite alternate" }}>
+              <div className="relative w-full h-full bg-[#0D1317]">
+                <img 
+                  src="/2.png" 
+                  alt={dict.hero.altPhoneLeft || "App Interface Left"} 
+                  className="w-full h-full object-cover object-top opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#A0AAB2]/20 to-[#152026]/90 pointer-events-none mix-blend-overlay" />
+              </div>
             </div>
-            <div className="text-left">
-              <div className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Product Hunt</div>
-              <div className="font-bold text-white tracking-wide">Product of the Day</div>
+
+            {/* Right Phone: Progress Stats */}
+            <div className="absolute right-[-10%] sm:right-[-5%] w-[160px] h-[320px] bg-[#152026] rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
+                 style={{ animation: "floatSideRight 4s ease-in-out infinite alternate 0.5s" }}>
+              <div className="relative w-full h-full bg-[#0D1317]">
+                <img 
+                  src="/3.png" 
+                  alt={dict.hero.altPhoneRight || "App Interface Right"} 
+                  className="w-full h-full object-cover object-top opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#00FF88]/20 to-[#152026]/90 pointer-events-none mix-blend-overlay" />
+              </div>
             </div>
-          </div>
-          
-          <div className="relative">
-            <p className="text-gray-300 text-lg max-w-[420px] leading-relaxed relative z-10 font-light">
-              <strong className="text-white font-semibold">Think deeper, build better.</strong><br />
-              BoudaMed is engineered to tackle complex, real-world software development challenges autonomously.
-            </p>
-            {/* Decorative line */}
-            <div className="absolute -left-6 top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FF5F6D] to-transparent hidden lg:block" />
+
+            {/* Center Main Phone: App Screen */}
+            <div className="absolute z-20 w-[240px] h-[480px] bg-[#0D1317] rounded-[2.5rem] border-[1.5px] border-[#00FF88]/30 shadow-[0_0_60px_rgba(0,255,136,0.15)] overflow-hidden"
+                 style={{ animation: "floatMain 3.5s ease-in-out infinite alternate" }}>
+              
+              {/* Notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-[#0D1317] rounded-b-2xl border-b border-x border-[#00FF88]/30 z-30" />
+              
+              {/* Screen Content */}
+              <div className="relative w-full h-full bg-[#0D1317]">
+                <img 
+                  src="/1.png" 
+                  alt={dict.hero.altPhoneMain || "SmartFit App Interface"} 
+                  className="w-full h-full object-cover object-top"
+                />
+                {/* Glare/Lighting overlay to blend with the 3D effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#00FF88]/10 via-transparent to-white/10 pointer-events-none mix-blend-overlay" />
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
+        
       </div>
     </div>
   );
