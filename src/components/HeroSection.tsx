@@ -94,18 +94,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             </button>
           </div>
           
-          <div className="pt-4 flex items-center gap-3">
-            <div className="flex -space-x-2.5">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="w-6 h-6 rounded-full border-2 border-[#0D1317] bg-[#152026] flex items-center justify-center overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-[#00FF88]/20 to-transparent" />
-                </div>
-              ))}
-            </div>
-            <div className="text-[10px] text-[#A0AAB2] tracking-wide">
-              <strong className="text-white">10 000+</strong> {dict.hero.activeAthletes}
-            </div>
-          </div>
         </div>
 
         {/* Right Column: 3D CSS Scene */}

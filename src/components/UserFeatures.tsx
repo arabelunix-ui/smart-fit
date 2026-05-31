@@ -1,6 +1,6 @@
 "use client";
 import { Activity, MapPin, Scale, ScanFace, Apple, ChevronRight, CheckCircle2, TrendingUp, Target } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -212,7 +212,7 @@ export default function UserFeatures({ dict }: UserFeaturesProps) {
     setImageIndex(0);
   };
 
-  const mockScreens: Record<number, JSX.Element> = {
+  const mockScreens: Record<number, React.ReactNode> = {
     1: <MockAIScreen dict={dict} />,
     3: <MockStatsScreen dict={dict} />,
     4: <MockNutritionScreen dict={dict} />,

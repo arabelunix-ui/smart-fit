@@ -88,7 +88,7 @@ export default function Navbar({ dict }: NavbarProps) {
       {/* Mobile Navigation Menu */}
       <div 
         className={`fixed inset-0 bg-[#0D1317] z-40 transition-transform duration-500 ease-in-out flex flex-col pt-24 px-6 md:hidden ${
-          mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex flex-col gap-6">

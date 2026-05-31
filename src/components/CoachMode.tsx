@@ -1,6 +1,6 @@
 "use client";
 import { UserCheck, ClipboardList, LineChart, Calendar, MessageCircle, Star, TrendingUp } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -241,7 +241,7 @@ export default function CoachMode({ dict }: CoachModeProps) {
     setImageIndex(0);
   };
 
-  const mockScreens: Record<number, JSX.Element> = {
+  const mockScreens: Record<number, React.ReactNode> = {
     1: <MockCreationScreen dict={dict} />,
     2: <MockAnalyticsScreen dict={dict} />,
     3: <MockChatScreen dict={dict} />,
