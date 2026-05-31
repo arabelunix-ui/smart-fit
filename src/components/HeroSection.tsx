@@ -1,6 +1,7 @@
 "use client";
 import { Dumbbell, Play, Activity, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface HeroSectionProps {
   dict: any;
@@ -116,10 +117,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             <div className="absolute left-[-10%] sm:left-[-5%] w-[160px] h-[320px] bg-[#152026] rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
                  style={{ animation: "floatSideLeft 4s ease-in-out infinite alternate" }}>
               <div className="relative w-full h-full bg-[#0D1317]">
-                <img 
+                <Image 
                   src="/2.png" 
                   alt={dict.hero.altPhoneLeft || "App Interface Left"} 
-                  className="w-full h-full object-cover object-top opacity-90"
+                  fill
+                  sizes="160px"
+                  priority
+                  className="object-cover object-top opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#A0AAB2]/20 to-[#152026]/90 pointer-events-none mix-blend-overlay" />
               </div>
@@ -129,10 +133,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             <div className="absolute right-[-10%] sm:right-[-5%] w-[160px] h-[320px] bg-[#152026] rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
                  style={{ animation: "floatSideRight 4s ease-in-out infinite alternate 0.5s" }}>
               <div className="relative w-full h-full bg-[#0D1317]">
-                <img 
+                <Image 
                   src="/3.png" 
                   alt={dict.hero.altPhoneRight || "App Interface Right"} 
-                  className="w-full h-full object-cover object-top opacity-90"
+                  fill
+                  sizes="160px"
+                  priority
+                  className="object-cover object-top opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#00FF88]/20 to-[#152026]/90 pointer-events-none mix-blend-overlay" />
               </div>
@@ -147,10 +154,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
               
               {/* Screen Content */}
               <div className="relative w-full h-full bg-[#0D1317]">
-                <img 
+                <Image 
                   src="/1.png" 
                   alt={dict.hero.altPhoneMain || "SmartFit App Interface"} 
-                  className="w-full h-full object-cover object-top"
+                  fill
+                  sizes="240px"
+                  priority
+                  className="object-cover object-top"
                 />
                 {/* Glare/Lighting overlay to blend with the 3D effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#00FF88]/10 via-transparent to-white/10 pointer-events-none mix-blend-overlay" />
