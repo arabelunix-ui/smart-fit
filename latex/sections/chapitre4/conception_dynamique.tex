@@ -1,0 +1,118 @@
+\section{Conception dynamique}
+
+\subsection{Intégration de l'Intelligence Artificielle : Analyse Dynamique}
+
+Pour offrir une expérience utilisateur personnalisée et sécurisée, notre application intègre plusieurs modules basés sur l'Intelligence Artificielle (IA). Cette intégration repose sur trois piliers fonctionnels majeurs : la détection de posture en temps réel, l'analyse par un coach virtuel, et l'assistance via un Chatbot.
+
+Voici l'analyse dynamique décrivant le fonctionnement et le flux de données de ces modules.
+
+\subsubsection{1. Détection de Posture en Temps Réel (Computer Vision)}
+La détection de posture a pour but de s'assurer que l'utilisateur exécute ses exercices correctement afin d'éviter les blessures et d'optimiser les résultats.
+
+\textbf{Analyse Dynamique (Le flux de traitement) :}
+\begin{enumerate}
+    \item \textbf{Acquisition vidéo} : L'utilisateur lance un exercice. L'application mobile active la caméra frontale du smartphone.
+    \item \textbf{Extraction des flux (Frames)} : Le flux vidéo est découpé en images (frames) envoyées à une fréquence précise (ex: 15 à 30 FPS).
+    \item \textbf{Traitement par le modèle IA} : Ces images sont analysées par un modèle de reconnaissance spatiale (type Pose Estimation, ex: MediaPipe ou un modèle hébergé sur le serveur). L'IA repère les "Keypoints" (points clés du corps : articulations, épaules, hanches, genoux).
+    \item \textbf{Calcul d'angles et validation} : L'algorithme calcule dynamiquement les angles entre les articulations et les compare au modèle mathématique de l'exercice parfait.
+    \item \textbf{Feedback instantané} :
+    \begin{itemize}
+        \item \textit{Si la posture est correcte} : L'application valide la répétition et l'interface affiche un indicateur visuel positif (couleur verte).
+        \item \textit{Si la posture est erronée} : Le système détecte l'anomalie (ex: "le dos n'est pas droit") et déclenche une alerte visuelle et/ou sonore sur l'application (ex: texte rouge "Gardez le dos droit").
+    \end{itemize}
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image lorsque votre diagramme de séquence sera prêt
+% \includegraphics[width=0.9\textwidth]{img/diagramme-sequence/posture.png}
+\caption{Diagramme de séquence : Détection de posture en temps réel}
+\end{figure}
+
+\subsubsection{2. Le Coach Virtuel (Génération de programme \& Recommandation)}
+Le coach virtuel agit comme un système expert et de recommandation. Il adapte l'entraînement de manière prédictive en fonction de l'évolution de l'utilisateur.
+
+\textbf{Analyse Dynamique (Le flux de traitement) :}
+\begin{enumerate}
+    \item \textbf{Collecte des données (Input)} : À chaque fin de séance, l'application collecte les données de performance de l'utilisateur (poids soulevé, fréquence cardiaque, ressenti de l'effort, calories brûlées).
+    \item \textbf{Transmission et Stockage} : Ces données sont envoyées au Backend (via l'API REST avec Axios) et sauvegardées dans la base de données.
+    \item \textbf{Analyse de l'IA (Machine Learning)} : De manière asynchrone (ou lors de la génération de la prochaine semaine d'entraînement), un modèle d'IA analyse l'historique des données pour évaluer la progression (surcharge progressive) et détecter les éventuels plateaux (stagnation) ou risques de surentraînement.
+    \item \textbf{Génération de la séance (Output)} : L'IA ajuste automatiquement le programme : elle génère de nouveaux exercices, modifie le nombre de répétitions ou le temps de repos.
+    \item \textbf{Mise à jour de l'UI} : L'application mobile récupère le nouveau programme optimisé et le présente à l'utilisateur sous forme de planning.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image lorsque votre diagramme de séquence sera prêt
+% \includegraphics[width=0.9\textwidth]{img/diagramme-sequence/coach.png}
+\caption{Diagramme de séquence : Coach Virtuel et Recommandation}
+\end{figure}
+
+\subsubsection{3. Le Chatbot Intelligent (NLP - Natural Language Processing)}
+Le Chatbot sert d'assistant disponible 24h/24 pour répondre aux questions liées à la nutrition, à la récupération ou à l'utilisation de l'application.
+
+\textbf{Analyse Dynamique (Le flux de traitement) :}
+\begin{enumerate}
+    \item \textbf{Interaction utilisateur} : L'utilisateur ouvre l'interface de messagerie (dans l'espace social) et tape une question en langage naturel (ex: "Que dois-je manger après ma séance de musculation ?").
+    \item \textbf{Transmission temps réel} : Le message est envoyé instantanément au serveur, de manière privilégiée via des WebSockets (utilisation de STOMP pour une latence minimale).
+    \item \textbf{Traitement NLP (Backend IA)} :
+    \begin{itemize}
+        \item Le moteur NLP analyse la requête pour comprendre l'intention de l'utilisateur et en extraire les entités (ex: intention = conseil nutrition, entité = post-entraînement).
+        \item L'IA interroge sa base de connaissances (ou un LLM configuré avec le contexte de l'application) pour formuler une réponse pertinente.
+    \end{itemize}
+    \item \textbf{Réponse dynamique} : Le serveur pousse (push) la réponse générée vers l'application mobile via le canal WebSocket.
+    \item \textbf{Affichage} : L'interface utilisateur se met à jour dynamiquement pour afficher la bulle de réponse du Chatbot, créant une expérience conversationnelle fluide.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image lorsque votre diagramme de séquence sera prêt
+% \includegraphics[width=0.9\textwidth]{img/diagramme-sequence/chatbot.png}
+\caption{Diagramme de séquence : Flux du Chatbot Intelligent (WebSocket \& NLP)}
+\end{figure}
+
+\subsection{Fonctionnalités de Suivi Avancées : Analyse Dynamique}
+
+Pour compléter l'expérience en salle de sport, l'application s'étend aux activités en extérieur (Outdoor) en offrant un suivi GPS natif et en se synchronisant avec des plateformes tierces de référence, notamment Strava.
+Voici l'analyse dynamique décrivant les flux de données et le comportement du système pour ces modules.
+
+\subsubsection{1. Intégration du Module GPS pour les Activités Outdoor}
+Ce module permet aux utilisateurs de tracer leurs courses, randonnées ou sorties à vélo, en mesurant la distance, l'allure et le dénivelé en temps réel. Le principal défi technique ici réside dans la gestion de la batterie (tracking continu en arrière-plan) et la précision du signal.
+
+\textbf{Analyse Dynamique (Le flux de traitement) :}
+\begin{enumerate}
+    \item \textbf{Initialisation et Autorisations} : L'utilisateur lance une activité "Outdoor". L'application (via \texttt{expo-location}) vérifie et demande l'autorisation d'accéder à la position de l'appareil.
+    \item \textbf{Tracking en Temps Réel (Polling/Abonnement)} : Une fois autorisé, le module s'abonne aux mises à jour de la puce GPS du smartphone. À intervalle régulier (ex: chaque seconde ou chaque 5 mètres), l'application reçoit un objet contenant les coordonnées (Latitude, Longitude), la vitesse, et l'horodatage.
+    \item \textbf{Traitement Local \& Affichage} :
+    \begin{itemize}
+        \item Les algorithmes locaux calculent dynamiquement la distance totale parcourue (via la formule de Haversine) et l'allure moyenne.
+        \item Le tracé est mis à jour en temps réel sur une carte interactive affichée à l'écran (grâce au module \texttt{react-native-maps}), en dessinant des polylignes reliant les points capturés.
+    \end{itemize}
+    \item \textbf{Fin de l'Activité et Sauvegarde} : Lorsque l'utilisateur stoppe sa séance, l'ensemble des points GPS (la trace) est filtré pour éliminer les anomalies de signal. Le résumé de la séance (Tracé géographique, Distance, Durée, Calories) est ensuite sérialisé en JSON et envoyé au serveur Backend (via \texttt{axios}) pour être sauvegardé dans l'historique du sportif.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image lorsque votre diagramme de séquence sera prêt
+% \includegraphics[width=0.9\textwidth]{img/diagramme-sequence/gps.png}
+\caption{Diagramme de séquence : Tracking GPS en temps réel}
+\end{figure}
+
+\subsubsection{2. Synchronisation et Analyse de Données depuis Strava}
+Pour centraliser la donnée sportive de l'utilisateur qui utiliserait déjà d'autres appareils (montres connectées Garmin, Apple Watch via Strava), l'application intègre une passerelle sécurisée avec l'API publique de Strava. Cette intégration s'appuie sur le standard de sécurité de l'industrie : \textbf{OAuth 2.0}.
+
+\textbf{Analyse Dynamique (Le flux de traitement) :}
+\begin{enumerate}
+    \item \textbf{Authentification OAuth 2.0} : Depuis la page Profil, l'utilisateur choisit de lier son compte Strava. L'application le redirige vers la page de connexion sécurisée de Strava. Après validation, Strava renvoie un code d'autorisation au Backend de notre application, qui l'échange contre un Access Token.
+    \item \textbf{Extraction des données (Data Pull)} : Soit de manière planifiée (tâche CRON sur le serveur), soit lors d'une action manuelle de l'utilisateur ("Synchroniser"), le Backend interroge l'API REST de Strava pour récupérer les dernières activités sportives enregistrées.
+    \item \textbf{Nettoyage et Normalisation (ETL)} : Le format de données de Strava étant spécifique, le Backend de l'application analyse (Parse) ces données brutes et les transforme (Mapping) pour qu'elles correspondent au modèle de base de données de notre application. Cela permet d'unifier une course issue de Strava avec une séance de musculation enregistrée manuellement sur notre app.
+    \item \textbf{Analyse Intelligente} : Les nouvelles métriques (Volume d'entraînement hebdomadaire, Charge cardiovasculaire) issues de Strava sont intégrées dans le calcul global de fatigue de l'utilisateur. Si le coach virtuel détecte que l'utilisateur a fait un marathon sur Strava la veille, il adaptera dynamiquement la séance de musculation du jour pour la rendre plus légère.
+    \item \textbf{Mise à jour des Tableaux de Bord} : L'application mobile fait une requête pour récupérer le nouvel historique unifié. Les graphiques de progression (gérés par \texttt{react-native-chart-kit} sur l'interface) se mettent à jour automatiquement pour inclure les performances Strava.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image lorsque votre diagramme de séquence sera prêt
+% \includegraphics[width=0.9\textwidth]{img/diagramme-sequence/strava.png}
+\caption{Diagramme de séquence : Synchronisation OAuth 2.0 avec Strava}
+\end{figure}

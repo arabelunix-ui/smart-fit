@@ -1,0 +1,10 @@
+\section{Besoins Non-Fonctionnels}
+Les besoins non fonctionnels définissent les critères de qualité, de performance et les contraintes techniques du système.
+
+\begin{itemize}
+    \item \textbf{Performance et Temps Réel} : L'analyse vidéo par l'IA (MediaPipe) doit se faire localement sur le smartphone (On-Device) sans latence réseau, avec un minimum de 30 images par seconde (FPS).
+    \item \textbf{Scalabilité} : Le backend (Spring Boot) doit être capable de gérer un grand nombre d'utilisateurs simultanés et de traiter massivement les historiques d'entraînement via Spring Batch.
+    \item \textbf{Sécurité} : L'authentification doit être protégée par JWT (JSON Web Token) via Spring Security. Les mots de passe doivent être hachés.
+    \item \textbf{Ergonomie (UI/UX)} : L'interface utilisateur mobile doit être intuitive, moderne et responsive pour s'adapter à toutes les tailles d'écrans (smartphones et tablettes).
+    \item \textbf{Disponibilité} : L'application doit garantir une haute disponibilité des bases de données et de l'API.
+\end{itemize}

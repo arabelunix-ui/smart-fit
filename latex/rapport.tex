@@ -1,0 +1,65 @@
+\documentclass[12pt,a4paper]{report}
+
+% Packages pour le français et l'encodage
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Packages pour la mise en page
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% Packages pour les images, les couleurs et les liens
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+% Configuration des couleurs
+\definecolor{redtitle}{RGB}{235, 64, 52} % Rouge pour les titres de la page de garde
+
+% Formatage des titres de chapitres
+\titleformat{\chapter}[hang]
+  {\normalfont\Huge\bfseries}{\thechapter}{1em}{}
+
+% Configuration de l'en-tête et pied de page
+\pagestyle{fancy}
+\fancyhf{} % Efface les en-têtes et pieds de page par défaut
+\fancyhead[R]{\nouppercase{\leftmark}} % Affiche le nom de la section (chapitre) à droite
+\fancyfoot[C]{\thepage} % Affiche le numéro de page en bas au centre
+\renewcommand{\headrulewidth}{0.4pt} % Ligne sous l'en-tête
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}} % Retire le mot "CHAPITRE" de l'en-tête
+
+\begin{document}
+
+% -----------------------------------------------------------
+% STRUCTURE DU DOCUMENT
+% -----------------------------------------------------------
+
+\input{sections/page_de_garde}
+\input{sections/dedicaces}
+\input{sections/remerciements}
+\input{sections/resume}
+
+% -----------------------------------------------------------
+% TABLES
+% -----------------------------------------------------------
+\tableofcontents
+\listoffigures
+
+% -----------------------------------------------------------
+% CHAPITRES
+% -----------------------------------------------------------
+\input{sections/introduction}
+\input{sections/chapitre1}
+\input{sections/chapitre2}
+\input{sections/chapitre3}
+\input{sections/chapitre4}
+\input{sections/chapitre5}
+\input{sections/chapitre6}
+\input{sections/conclusion}
+\input{sections/webographie}
+
+
+\end{document}

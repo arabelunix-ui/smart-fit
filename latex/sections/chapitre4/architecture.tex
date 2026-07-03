@@ -1,0 +1,86 @@
+Ce chapitre constitue le cœur de notre travail d'ingénierie. Une fois les technologies choisies et les besoins spécifiés, il est impératif de définir la structure globale de l'application avant d'entamer le codage. Nous présenterons ici l'architecture technique retenue, la modélisation conceptuelle de nos données, ainsi que la conception dynamique de nos algorithmes d'intelligence artificielle, pour finir sur un aperçu de l'interface utilisateur.
+
+\section{Architecture logicielle et technique}
+Afin de garantir la scalabilité, la sécurité et la maintenabilité de notre application de fitness intelligent, nous avons opté pour une architecture distribuée s'appuyant sur des API RESTful.
+
+\subsection{Côté Client (Frontend Mobile)}
+Notre application mobile, baptisée SmartFit, est développée avec l'écosystème moderne de \textbf{React Native}. Elle est conçue pour connecter les sportifs avec des coachs professionnels tout en offrant un suivi sportif complet.
+
+\subsubsection{Objectifs et Fonctionnalités Principales}
+\begin{itemize}
+    \item \textbf{Pour les sportifs} : Suivi d'entraînements (workouts), suivi nutritionnel, programmes personnalisés, et suivi des progrès physiques (tracking).
+    \item \textbf{Pour les coachs} : Un espace dédié pour s'inscrire, gérer leurs élèves et attribuer des programmes.
+    \item \textbf{Aspect Social} : Une dimension sociale intégrée (messagerie) pour échanger avec son coach ou d'autres membres de la communauté.
+\end{itemize}
+
+\subsubsection{La Stack Technique Frontend}
+Le choix des technologies Frontend repose sur des outils modernes et hautement performants :
+\begin{itemize}
+    \item \textbf{Framework et Langage} : \textbf{React Native} avec le framework \textbf{Expo} (SDK 54), programmé en \textbf{TypeScript} (fortement typé).
+    \item \textbf{Navigation} : Routage basé sur les fichiers avec \textbf{Expo Router}.
+    \item \textbf{Réseau et Temps Réel} : \texttt{axios} pour les appels API REST et \texttt{@stomp/stompjs} pour la gestion des WebSockets (utilisé pour le chat social en temps réel).
+    \item \textbf{UI et Animations} : Des animations fluides gérées par \texttt{react-native-reanimated}, \texttt{moti} et \texttt{framer-motion}. Les icônes sont fournies par \texttt{@expo/vector-icons}, et la visualisation des muscles sollicités est assurée par \texttt{react-native-body-highlighter}.
+    \item \textbf{Data Visualisation et Localisation} : Affichage des graphiques et métriques via \texttt{react-native-chart-kit} et \texttt{react-native-gifted-charts}. Les fonctionnalités de localisation s'appuient sur \texttt{expo-location} et \texttt{react-native-maps}.
+    \item \textbf{Stockage et Sécurité} : \texttt{AsyncStorage} et \texttt{expo-secure-store} pour conserver les tokens de connexion en toute sécurité. La validation des données est effectuée avec \texttt{zod}.
+    \item \textbf{Internationalisation (Translation)} : L'application gère plusieurs langues de manière dynamique grâce aux bibliothèques \texttt{i18next} et \texttt{react-i18next}. Les traductions (anglais, français, etc.) sont centralisées dans des fichiers de ressources JSON distincts. Le changement de langue s'effectue en temps réel sans nécessité de redémarrer l'application, et le choix de l'utilisateur est mémorisé via \texttt{AsyncStorage} pour persister lors des prochaines sessions.
+    \item \textbf{Cœur d'IA (On-Device)} : L'analyse des mouvements est effectuée en local grâce à \textbf{MediaPipe} et \textbf{TensorFlow Lite}, ce qui permet une correction de posture en temps réel sans latence réseau.
+\end{itemize}
+
+\subsubsection{Les Pages et Écrans Existants (Routage)}
+Grâce à Expo Router, l'arborescence du dossier \texttt{app/} dicte la structure de navigation de notre application :
+\begin{itemize}
+    \item \textbf{\texttt{/auth}} : Authentification (Écrans de connexion et d'inscription).
+    \item \textbf{\texttt{/onboarding} \& \texttt{/coach-onboarding}} : Écrans d'accueil pour la configuration du profil des sportifs (poids, objectifs) et un onboarding spécifique pour les coachs.
+    \item \textbf{\texttt{/(tabs)}} : Navigation principale (Bottom Tabs) contenant l'accueil, le calendrier, etc.
+    \item \textbf{\texttt{/programme} \& \texttt{/workout}} : Gestion des plans d'entraînement et écrans spécifiques pour une séance de sport active (chronomètre, exercices, répétitions).
+    \item \textbf{\texttt{/nutrition} \& \texttt{/tracking}} : Suivi des repas, des calories et affichage de l'évolution des performances avec des graphiques.
+    \item \textbf{\texttt{/social}} : Espace communautaire et messagerie.
+    \item \textbf{\texttt{/profile} \& \texttt{/(coach)}} : Paramètres personnels de l'utilisateur et un espace protégé dédié uniquement aux coachs.
+    \item \textbf{\texttt{/misc}} : Autres écrans utilitaires (conditions d'utilisation, paramètres généraux).
+\end{itemize}
+
+\subsection{Côté Serveur (Backend) et Base de données}
+Notre backend est une API REST monolithique modulaire (structurée par domaines métiers) développée avec \textbf{Java 21} et le framework \textbf{Spring Boot}. Il interagit avec le Frontend via des requêtes HTTP (JSON) et gère l'ensemble de la logique métier complexe de SmartFit.
+
+\subsubsection{Dépendances et Outils Principaux}
+\begin{itemize}
+    \item \textbf{Cœur et Web} : \texttt{spring-boot-starter-webmvc} pour exposer l'API REST, et \texttt{spring-boot-starter-validation} pour valider les données entrantes (DTOs).
+    \item \textbf{Persistance} : \texttt{spring-boot-starter-data-jpa} pour l'interaction avec la base de données via Hibernate, connectée à une base \textbf{PostgreSQL} (ou MySQL via \texttt{mysql-connector-j}) pour assurer l'intégrité des données.
+    \item \textbf{Sécurité} : \texttt{spring-boot-starter-security} couplé à \texttt{io.jsonwebtoken} pour l'authentification "stateless" par JWT.
+    \item \textbf{Temps Réel et Visio} : \texttt{spring-boot-starter-websocket} pour le chat, sécurisé par \texttt{spring-security-messaging}. L'intégration du SDK d'Agora (\texttt{io.agora:authentication}) permet de générer des tokens RTC pour les appels vidéo/audio.
+    \item \textbf{Outils Tiers} : \texttt{google-api-client} pour l'intégration des services Google (OAuth2, Agenda), ainsi que \texttt{lombok} pour alléger le code source.
+\end{itemize}
+
+\subsubsection{Architecture des Services (Domaines)}
+Le code backend est structuré par fonctionnalités, isolant strictement le métier des différents acteurs :
+\begin{itemize}
+    \item \textbf{Authentification et Sécurité} : \texttt{AuthService}, \texttt{JwtService} et \texttt{UserDetailServiceImpl} gèrent les connexions et l'émission des tokens JWT pour prouver l'identité de l'utilisateur.
+    \item \textbf{Espace Sportif} : Des services dédiés (\texttt{DashboardSportifService}, \texttt{ActivityService}, \texttt{SuiviPlanClientService}) gèrent l'expérience de l'athlète, ses demandes de programmes et son journal d'activités.
+    \item \textbf{Espace Coach} : Les services comme \texttt{CoachProfileService}, \texttt{ProgrammeSportifCoachService} ou \texttt{NutritionCoachService} permettent aux professionnels de concevoir des plans sur mesure, traiter les demandes, et suivre leurs élèves.
+    \item \textbf{Analytique et Statistiques} : \texttt{CoachAnalyticsService} et \texttt{SportifAnalyticsService} calculent les métriques de progression ou de revenus.
+    \item \textbf{Communication} : \texttt{MessagingService} gère l'envoi et la réception de messages instantanés via WebSockets, tandis que le \texttt{FileStorageService} s'occupe du stockage local ou cloud des pièces jointes, vidéos et photos.
+    \item \textbf{Cœur du Métier} : \texttt{ExerciceService} et \texttt{SeanceEntrainementService} orchestrent le catalogue de mouvements et le déroulement des séances d'entraînement.
+\end{itemize}
+
+\subsubsection{Intelligence Artificielle avec Spring AI}
+L'intégration du module \texttt{spring-ai-openai-spring-boot-starter} permet de rendre la plateforme proactive :
+\begin{itemize}
+    \item \textbf{Génération de programmes} : L'IA propose un "brouillon" de programme automatique au coach (via \texttt{DemandeProgrammePersonnaliseClientService}) en fonction des données du sportif (âge, poids, équipement).
+    \item \textbf{Coach Virtuel (Chatbot)} : Branché sur le \texttt{MessagingService}, un assistant IA répond aux questions de base de l'athlète lorsque le coach n'est pas disponible.
+    \item \textbf{Analyse de sentiments} : L'IA peut détecter les baisses de motivation dans les retours de séance et envoyer une alerte automatisée au coach.
+\end{itemize}
+
+\subsubsection{Traitements Asynchrones avec Spring Batch}
+Le module \texttt{spring-boot-starter-batch} est exploité pour automatiser les tâches lourdes en arrière-plan :
+\begin{itemize}
+    \item \textbf{Analytique (Caching)} : Plutôt que de calculer les statistiques de progression en temps réel, des scripts Spring Batch s'exécutent la nuit pour pré-calculer et agréger les données (calories, volumes soulevés).
+    \item \textbf{Abonnements} : Un job nocturne vérifie les dates d'inscription des sportifs (via \texttt{InscriptionClientService}) et gère les relances ou les suspensions de comptes expirés.
+    \item \textbf{Rétention} : Un batch détecte les utilisateurs inactifs depuis plus de 7 jours et génère des e-mails d'encouragement personnalisés via l'IA pour relancer leur motivation.
+\end{itemize}
+
+% NOTE : Vous pourrez décommenter ce code et ajouter votre image d'architecture
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=0.8\textwidth]{img/architecture_globale.png}
+% \caption{Diagramme d'architecture globale du système}
+% \end{figure}

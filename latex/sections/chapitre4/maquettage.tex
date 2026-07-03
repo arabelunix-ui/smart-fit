@@ -1,0 +1,67 @@
+\section{Maquettage et UI/UX : Arborescence et Navigation}
+
+Sachant que l'application s'adresse au grand public, l'ergonomie, la simplicité d'utilisation et la motivation visuelle sont primordiales. Avant d'entamer le développement, nous avons réalisé des maquettes interactives (Wireframes) pour concevoir l'expérience utilisateur (UX) et l'interface utilisateur (UI).
+
+Pour la navigation, l'application utilise \textbf{Expo Router v6}, ce qui permet un routage déclaratif basé sur le système de fichiers (File-based routing). Cette approche garantit une architecture propre, modulaire et une excellente gestion des "Deep Links" (liens profonds). Chaque fichier ou dossier dans le répertoire \texttt{app/} correspond directement à une "Route" (un écran de l'application).
+
+Voici la cartographie détaillée des routes et des écrans composant notre interface :
+
+\subsection{1. Routes d'Authentification et d'Inscription (\texttt{/auth})}
+Ce groupe de routes gère l'arrivée de l'utilisateur, de la page de présentation jusqu'à la connexion.
+\begin{itemize}
+    \item \texttt{/auth/welcome} : Écran d'accueil principal (Splash ou présentation).
+    \item \texttt{/auth/intro} : Présentation des fonctionnalités clés de l'application.
+    \item \texttt{/auth/role-selection} : Choix du type de compte (Sportif ou Coach professionnel).
+    \item \texttt{/auth/login} : Page de connexion sécurisée.
+    \item \texttt{/auth/signup} : Page d'inscription basique.
+    \item \texttt{/auth/become-coach} : Écran spécifique pour le recrutement et l'inscription des coachs.
+\end{itemize}
+
+\subsection{2. Flux d'Onboarding et Personnalisation (\texttt{/onboarding})}
+Un flux très granulaire permettant de configurer le profil du sportif étape par étape, afin de collecter les données nécessaires pour que l'Intelligence Artificielle et le coach virtuel puissent adapter les programmes.
+\begin{itemize}
+    \item \texttt{/onboarding/gender} : Saisie du genre.
+    \item \texttt{/onboarding/dob} : Date de naissance.
+    \item \texttt{/onboarding/weight} : Saisie du poids de départ.
+    \item \texttt{/onboarding/goals} : Définition des objectifs (ex: perte de poids, prise de masse).
+    \item \texttt{/onboarding/experience} : Niveau sportif actuel (débutant, intermédiaire, avancé).
+    \item \texttt{/onboarding/frequency} \& \texttt{/onboarding/duration} : Fréquence et durée d'entraînement souhaitées.
+    \item \texttt{/onboarding/equipment} : Inventaire du matériel à disposition de l'utilisateur.
+\end{itemize}
+
+\subsection{3. Navigation Principale (\texttt{/(tabs)})}
+C'est le cœur de l'application une fois l'utilisateur connecté. Ces routes sont accessibles de manière fluide via la barre de navigation (Bottom Tabs).
+\begin{itemize}
+    \item \texttt{/} (index) : Le tableau de bord principal (Home) avec le résumé de la progression.
+    \item \texttt{/explore} : Découverte de nouveaux exercices, programmes ou coachs disponibles.
+    \item \texttt{/workout} : L'onglet central pour démarrer ou visualiser ses entraînements du jour.
+    \item \texttt{/nutrition} : L'espace dédié au suivi alimentaire et calorique.
+    \item \texttt{/chat} : L'espace de messagerie (via WebSockets) pour interagir avec le coach ou le chatbot.
+    \item \texttt{/activity} : Historique global et statistiques des activités sportives.
+    \item \texttt{/profile} : Paramètres et gestion globale du compte utilisateur.
+\end{itemize}
+
+\subsection{4. Section Entraînement et Séances (\texttt{/workout})}
+Regroupe l'ensemble des écrans liés à l'exécution pratique et au suivi d'une séance de sport.
+\begin{itemize}
+    \item \texttt{/workout/exercise-library} : La bibliothèque exhaustive de tous les exercices.
+    \item \texttt{/workout/muscle-exercises} : Tri et filtrage des exercices par groupe musculaire.
+    \item \texttt{/workout/exercise-details} : Vidéo et explications détaillées d'un exercice précis.
+    \item \texttt{/workout/workout-detail} : Aperçu complet d'une séance avant de la démarrer.
+    \item \texttt{/workout/workout-session} \& \texttt{/workout/workout-player} : Interface active d'entraînement (chronomètre, séries, répétitions en temps réel).
+    \item \textbf{\texttt{/workout/posture}} : Écran central de l'IA activant la caméra pour la détection de posture par Computer Vision.
+    \item \textbf{\texttt{/workout/running}} : Écran exploitant le capteur GPS pour le suivi des courses en extérieur.
+    \item \texttt{/workout/finish-workout} : Écran de résumé, de félicitations et de statistiques de fin de séance.
+\end{itemize}
+
+\subsection{5. Section Programmes (\texttt{/programme})}
+\begin{itemize}
+    \item \texttt{/programme/programme-detaille} : Affichage complet d'un plan d'entraînement structuré sur plusieurs semaines (macro-cycle et micro-cycle).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % Décommentez et ajustez le nom de l'image pour insérer votre diagramme ou arbre de navigation
+% \includegraphics[width=0.9\textwidth]{img/arborescence-navigation.png}
+\caption{Diagramme de navigation et arborescence des écrans (Expo Router)}
+\end{figure}

@@ -1,0 +1,70 @@
+\chapter{État de l'art et Étude de l'existant}
+
+Ce chapitre constitue une étape primordiale dans notre démarche scientifique et technique. Avant d'entamer la phase de conception et de développement, il est essentiel de comprendre l'environnement dans lequel s'insère notre solution. Nous analyserons les pratiques actuelles dans le domaine du fitness, évaluerons les applications existantes sur le marché et réaliserons une étude comparative des technologies afin de justifier nos choix finaux.
+
+\section{Analyse de l'existant}
+Actuellement, la gestion de l'entraînement sportif et du fitness à domicile s'effectue selon deux grandes approches. La première consiste à s'inscrire dans une salle de sport et à faire appel à un coach personnel. Bien que cette méthode garantisse un suivi optimal et une correction de la posture, elle reste une solution coûteuse et chronophage.
+
+La seconde approche, de plus en plus populaire, repose sur l'utilisation d'applications mobiles traditionnelles ou de vidéos préenregistrées (sur YouTube par exemple). Cependant, ces solutions présentent de lourdes limites : 
+\begin{itemize}
+    \item \textbf{Absence de correction en temps réel} : L'utilisateur ne sait pas s'il exécute le mouvement correctement.
+    \item \textbf{Risque de blessure élevé} : Une mauvaise exécution répétée d'un exercice (comme les squats ou les pompes) peut entraîner de graves problèmes articulaires et musculaires.
+    \item \textbf{Manque de personnalisation dynamique} : Les programmes sont souvent génériques et ne s'adaptent pas à la fatigue ou à l'évolution réelle de la performance de l'utilisateur.
+\end{itemize}
+
+\section{Étude des solutions existantes (Benchmark)}
+Pour mieux cerner les attentes des utilisateurs, nous avons étudié quelques applications de fitness parmi les plus populaires du marché :
+
+\begin{itemize}
+    \item \textbf{Freeletics \& Nike Training Club} : Ce sont d'excellentes applications proposant des programmes d'entraînement variés et de haute qualité. Cependant, elles s'appuient uniquement sur des vidéos de démonstration et ne vérifient pas l'exécution des mouvements de l'utilisateur.
+    \item \textbf{Peloton} : Propose des cours interactifs en direct, mais nécessite souvent l'achat d'un équipement coûteux (vélo, tapis) et ne corrige pas la posture corporelle via caméra.
+    \item \textbf{Solutions basées sur l'IA (ex: Fitbod)} : Génèrent des entraînements personnalisés grâce à des algorithmes, mais la composante "vision par ordinateur" (Computer Vision) pour l'analyse des mouvements en temps réel sur smartphone reste très rare, coûteuse ou expérimentale.
+\end{itemize}
+
+\textbf{Conclusion du benchmark} : Il existe un réel besoin sur le marché pour une application mobile accessible (ne nécessitant que la caméra du smartphone) capable d'analyser la posture de l'utilisateur en temps réel et de corriger ses mouvements, agissant ainsi comme un véritable coach virtuel interactif.
+
+\section{Étude technologique}
+Pour répondre à ce besoin avec performance et fiabilité, nous avons comparé plusieurs technologies et frameworks incontournables.
+
+\subsection{Développement Mobile (Frontend)}
+\begin{itemize}
+    \item \textbf{Développement Natif (Java/Kotlin, Swift)} : Offre les meilleures performances, mais nécessite de développer deux codes distincts pour Android et iOS, ce qui demande trop de temps.
+    \item \textbf{React Native vs Flutter} : Ce sont les deux frameworks multiplateformes leaders. Flutter offre de bonnes performances graphiques, mais React Native dispose d'une communauté beaucoup plus large, de très nombreuses bibliothèques prêtes à l'emploi et s'intègre parfaitement avec des modules de machine learning via JavaScript.
+\end{itemize}
+
+\subsection{Intelligence Artificielle et Vision par Ordinateur}
+\begin{itemize}
+    \item \textbf{OpenCV \& algorithmes classiques} : Trop lourds et complexes pour une détection de posture fluide sur un appareil mobile grand public.
+    \item \textbf{MediaPipe (par Google)} : Solution de pointe, légère et ultra-rapide pour l'estimation de pose en temps réel sur mobile (détection précise des 33 repères articulaires du corps humain).
+    \item \textbf{TensorFlow / TensorFlow Lite} : La norme de l'industrie, parfait pour entraîner nos propres modèles de Machine Learning (classification des mouvements, détection des erreurs de posture) basés sur les données extraites par MediaPipe.
+\end{itemize}
+
+\subsection{Développement Backend et API}
+\begin{itemize}
+    \item \textbf{Node.js ou Python (FastAPI)} : Bien qu'ils soient performants, ils manquent parfois de la robustesse et des outils natifs nécessaires pour une application d'entreprise complexe traitant de la donnée massive.
+    \item \textbf{Java avec Spring Boot} : C'est le framework d'entreprise par excellence. Il permet de bâtir des architectures robustes, hautement scalables et sécurisées. Son écosystème extrêmement riche propose des modules novateurs tels que \textbf{Spring AI} (pour l'intégration facilitée de modèles d'intelligence artificielle) et \textbf{Spring Batch} (pour le traitement asynchrone et le calcul sur de très gros volumes de données).
+\end{itemize}
+
+\subsection{Base de données}
+\begin{itemize}
+    \item \textbf{MongoDB (NoSQL)} : Très flexible pour des données non structurées.
+    \item \textbf{PostgreSQL (SQL)} : Offre une grande robustesse, des relations fortes et l'intégrité des données, ce qui est crucial pour stocker les profils utilisateurs, leur historique d'entraînement et leurs statistiques de performance de manière sécurisée.
+\end{itemize}
+
+\section{Justification des choix finaux}
+À l'issue de cette étude technologique exhaustive, nous avons arrêté nos choix sur une \textbf{Stack robuste, moderne et orientée Intelligence Artificielle} :
+
+\begin{itemize}
+    \item \raisebox{-0.2\height}{\includegraphics[width=0.8cm]{img/react.png}} \textbf{Frontend Mobile} : \textbf{React Native}, pour garantir un développement rapide multiplateforme (iOS/Android) tout en profitant d'un écosystème gigantesque.
+    
+    \vspace{0.3cm}
+    \item \raisebox{-0.2\height}{\includegraphics[width=0.8cm]{img/tensorflow.png}} \textbf{Cœur d'IA (On-Device)} : \textbf{MediaPipe Pose} combiné à \textbf{TensorFlow Lite} pour analyser les mouvements en temps réel directement sur le téléphone sans latence réseau.
+
+    \vspace{0.3cm}
+    \item \raisebox{-0.2\height}{\includegraphics[width=0.8cm]{img/spring.png}} \textbf{Backend} : L'écosystème \textbf{Spring Boot (Java)} intégrant les modules \textbf{Spring AI} et \textbf{Spring Batch}. Ce choix garantit une plateforme hautement sécurisée, évolutive, capable de traiter massivement les données d'entraînement et de s'interfacer puissamment avec nos algorithmes d'IA.
+
+    \vspace{0.3cm}
+    \item \raisebox{-0.2\height}{\includegraphics[width=0.8cm]{img/postgresql.png}} \textbf{Base de données} : \textbf{PostgreSQL} pour garantir la structuration et la sécurité des données des utilisateurs et de leurs historiques d'entraînement.
+\end{itemize}
+
+Ces choix technologiques valident notre approche et nous assurent de disposer des outils les plus adéquats du marché pour relever le défi technique de ce projet ambitieux.

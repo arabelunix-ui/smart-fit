@@ -1,0 +1,36 @@
+\chapter{Bilan, Difficultés et Perspectives}
+
+Ce dernier chapitre vient clore notre projet de fin d'année en proposant une prise de recul sur le travail accompli. La réalisation de l'application \textbf{SmartFit} a été un défi technique et organisationnel particulièrement enrichissant. Nous présenterons ici le bilan de nos réalisations, les obstacles que nous avons dû surmonter tout au long du cycle de développement, ainsi que les pistes d'amélioration pour l'avenir du produit.
+
+\section{Bilan du Projet}
+L'objectif principal de ce projet était de concevoir et développer une plateforme complète (Backend et Mobile) révolutionnant l'accompagnement sportif grâce à l'Intelligence Artificielle. Au terme de ce travail, nous pouvons affirmer que les objectifs fixés ont été atteints avec succès :
+
+\begin{itemize}
+    \item \textbf{Une architecture robuste et moderne} : Nous avons réussi à mettre en place une API RESTful performante avec \textbf{Spring Boot (Java 21)}, adossée à une base de données PostgreSQL sécurisée.
+    \item \textbf{Une application mobile performante} : Grâce à \textbf{React Native} et \textbf{Expo Router v6}, nous avons livré une application cross-platform fluide, bénéficiant d'une excellente navigation et d'un design centré sur l'utilisateur (UI/UX).
+    \item \textbf{L'intégration réussie de l'IA} : L'implémentation de modèles de \textbf{Computer Vision} (TensorFlow Lite) permet d'analyser la posture des utilisateurs en temps réel via la caméra de leur smartphone.
+    \item \textbf{Des fonctionnalités professionnelles} : Le module de tracking GPS, l'intégration OAuth 2.0 avec Strava, et les WebSockets pour la messagerie instantanée en font une application de qualité commerciale, apte à être utilisée par des coachs professionnels.
+\end{itemize}
+
+Ce projet nous a permis de consolider nos acquis académiques, mais surtout d'adopter une véritable posture d'ingénieur logiciel en gérant un projet de sa conception théorique (UML, architecture métier) jusqu'à son déploiement cloud (Docker, Render, CI/CD).
+
+\section{Difficultés Rencontrées}
+Un projet d'une telle envergure n'est jamais exempt de défis. Au cours de ces mois de développement, nous avons été confrontés à plusieurs problématiques majeures :
+
+\begin{itemize}
+    \item \textbf{Optimisation du modèle d'Intelligence Artificielle sur Mobile} : L'un des plus grands défis a été de faire tourner le modèle de détection de posture en temps réel (plus de 30 FPS) directement sur le téléphone (Edge Computing) sans vider la batterie ni causer de surchauffe. Il a fallu optimiser l'utilisation de la RAM et compresser le modèle TensorFlow.
+    \item \textbf{Tracking GPS en arrière-plan} : Le suivi des activités "Outdoor" nécessitait de capturer la position GPS même lorsque l'application était en arrière-plan ou que l'écran était verrouillé. La gestion des permissions strictes (Android/iOS) et le filtrage des données GPS bruitées pour calculer une distance exacte ont demandé beaucoup de recherches.
+    \item \textbf{Gestion des états asynchrones et WebSockets} : Garantir que les messages du chat arrivent instantanément sans déconnexion, tout en synchronisant l'état global de l'application (avec Zustand/Redux), a complexifié le développement frontend.
+    \item \textbf{Intégration de l'API Strava (OAuth 2.0)} : La mise en place du flux de sécurité OAuth 2.0 (renouvellement des tokens via \textit{Refresh Tokens}) et l'adaptation de notre modèle de données à celui fourni par Strava a nécessité une architecture backend très rigoureuse.
+\end{itemize}
+
+\section{Perspectives et Améliorations Futures}
+Si la version actuelle de SmartFit répond au cahier des charges initial et constitue un Minimum Viable Product (MVP) très solide, l'évolution technologique et les retours potentiels des utilisateurs ouvrent la voie à de nombreuses améliorations :
+
+\begin{itemize}
+    \item \textbf{Intégration des objets connectés (IoT)} : La prochaine étape logique consisterait à connecter l'application avec les montres connectées (Apple Watch, Garmin, WearOS) via Apple HealthKit et Google Fit, afin de récupérer le rythme cardiaque et la saturation en oxygène (SpO2) en temps réel.
+    \item \textbf{Commandes vocales (NLP)} : Permettre à l'utilisateur de valider ses séries, lancer un chronomètre ou demander des conseils à l'IA uniquement par la voix pendant son entraînement, en utilisant le traitement du langage naturel (Speech-to-Text).
+    \item \textbf{Dimension sociale et Gamification} : Ajouter un fil d'actualité permettant aux sportifs de partager leurs séances accomplies, de s'affronter dans des classements virtuels (Leaderboards) et de débloquer des badges de succès pour booster la rétention.
+    \item \textbf{Migration Cloud et Scalabilité} : Actuellement hébergé sur un plan gratuit Render pour les tests, le système devra migrer vers un cluster \textbf{Kubernetes} (K8s) hébergé sur Microsoft Azure ou AWS. Cela permettra une mise à l'échelle automatique (Auto-scaling) capable de gérer des milliers d'utilisateurs et de requêtes WebSockets simultanées.
+    \item \textbf{Monétisation et Paiements} : Intégrer l'API \textbf{Stripe} pour gérer les abonnements in-app (Premium) et permettre aux coachs de facturer leurs services de coaching personnalisé directement via la plateforme.
+\end{itemize}
